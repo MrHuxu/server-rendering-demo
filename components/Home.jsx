@@ -13,7 +13,6 @@ class Home extends Component {
   }
 
   setBlue () {
-    alert('hehe');
     this.setState({ color: '#02bad2' })
   }
 

@@ -1,8 +1,9 @@
 import path from 'path';
 import React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './routes/index';
+import Home from './components/Home.jsx';
 
 import express from 'express';
 var app = express();
@@ -22,8 +23,10 @@ app.use((req, res) => {
       // You can also check renderProps.components or renderProps.routes for
       // your "not found" component or route respectively, and send a 404 as
       // below, if you're using a catch-all route.
+      console.log(Home);
       res.status(200).render('index', {
-        markup: renderToStaticMarkup(<RouterContext {...renderProps} />)
+        component: Home,
+        markup: renderToString(<RouterContext {...renderProps} />)
       });
     } else {
       res.status(404).send('Not found')
