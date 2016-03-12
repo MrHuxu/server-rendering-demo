@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Server Rendering Demo</title>
+</head>
+<body>
+  <div id="container">
+    <%- markup %>
+  </div>
+  <script src="//cdn.bootcss.com/react/0.14.7/react.min.js"></script>
+  <script>
+    var container = document.getElementById("container");
+    React.render(Item, container);
+  </script>
+</body>
+</html>

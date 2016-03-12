@@ -1,10 +1,14 @@
+import path from 'path';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './routes/index';
 
 import express from 'express';
 var app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use((req, res) => {
   // Note that req.url here should be the full URL path from
@@ -18,7 +22,9 @@ app.use((req, res) => {
       // You can also check renderProps.components or renderProps.routes for
       // your "not found" component or route respectively, and send a 404 as
       // below, if you're using a catch-all route.
-      res.status(200).send(renderToString(<RouterContext {...renderProps} />))
+      res.status(200).render('index', {
+        markup: renderToStaticMarkup(<RouterContext {...renderProps} />)
+      });
     } else {
       res.status(404).send('Not found')
     }
