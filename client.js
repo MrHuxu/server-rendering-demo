@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-import Home from './components/Home';
+import { render } from 'react-dom';
+import { Router } from 'react-router';
+import routes from './routes';
 
 var container = document.getElementById("container");
-ReactDom.render(<Home />, container);
+render(<Router routes={routes} />, container);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class Home extends Component {
   constructor (props) {
@@ -19,10 +20,6 @@ class Home extends Component {
     this.setState({ color: '#e57373' })
   }
 
-  componentDidMount () {
-    alert('hehe')
-  }
-
   render () {
     return this.props.children || (
       <div>
@@ -30,6 +27,7 @@ class Home extends Component {
         <button onClick={this.setBlue}> set blue </button>
         <button onClick={this.setOrange}> set orange </button>
         <div style={{ width: 100, height: 50, backgroundColor: this.state.color }} />
+        <Link to='/test/'> to test </Link>
       </div>
     );
   }
