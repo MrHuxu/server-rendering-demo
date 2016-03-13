@@ -7,11 +7,6 @@
   <div id="container">
     <%- markup %>
   </div>
-  <script src="//cdn.bootcss.com/react/0.14.6/react.js"></script>
-  <script>
-    var container = document.getElementById("container");
-    var App = <%- component %>
-    React.render(App(), container);
-  </script>
+  <script type="text/javascript" src="http://localhost:6789/assets/bundle.js"></script>
 </body>
 </html>
