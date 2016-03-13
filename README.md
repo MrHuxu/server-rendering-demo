@@ -12,7 +12,7 @@ Firtly make sure you have installed ```Nodejs```(5.0+), then clone this repo to 
 
         npm run serve-client
 
-2. Start express server:
+2. Open another session in terminal, and use the command below to start express server:
 
         npm start
 
