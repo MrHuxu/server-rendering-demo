@@ -6,7 +6,7 @@ class Test extends Component {
     return (
       <div>
         <h3> Test </h3>
-        <Link to='/'>Back to Home</Link>
+        <a href='/'>Back to Home</a>
       </div>
     );
   }
