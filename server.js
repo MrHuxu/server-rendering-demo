@@ -3,6 +3,8 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './routes';
+import { Provider } from 'react-redux';
+import { rootStore } from './store';
 
 import express from 'express';
 var app = express();
@@ -18,7 +20,11 @@ app.use((req, res) => {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
       res.status(200).render('index', {
-        markup: renderToString(<RouterContext {...renderProps} />)
+        markup: renderToString(
+          <Provider store={rootStore}>
+            <RouterContext {...renderProps} />
+          </Provider>
+        )
       });
     } else {
       res.status(404).send('Not found')
