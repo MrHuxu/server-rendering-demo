@@ -9,5 +9,6 @@ var container = document.getElementById("container");
 render(
   <Provider store={rootStore}>
     <Router routes={routes} history={browserHistory} />
-  </Provider>, container
+  </Provider>,
+  container
 );

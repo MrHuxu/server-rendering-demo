@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 class Test extends Component {
+  static initState () {
+    return Promise.resolve({});
+  }
+
   render () {
     return (
       <div>
@@ -12,4 +17,4 @@ class Test extends Component {
   }
 }
 
-export default Test;
+export default connect()(Test);

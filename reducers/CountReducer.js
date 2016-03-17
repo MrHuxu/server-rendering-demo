@@ -1,17 +1,15 @@
 import { COUNT_UP, COUNT_DOWN } from '../actions/CountActions';
 
-export function count(state = {
-  count: 10
-}, action) {
+export function count(state = {}, action) {
   switch (action.type) {
     case COUNT_UP:
       return {
-        count: state.count + 1
+        num: state.num + 1
       };
 
     case COUNT_DOWN:
       return {
-        count: state.count - 1
+        num: state.num - 1
       };
 
     default:

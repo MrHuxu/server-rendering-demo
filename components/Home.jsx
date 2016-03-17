@@ -16,6 +16,12 @@ class Home extends Component {
     this.handleCountDown = this.handleCountDown.bind(this);
   }
 
+  static initState () {
+    return Promise.resolve({
+      count: { num: 10 }
+    });
+  }
+
   handleCountUp () {
     this.props.dispatch(countUp());
   }
@@ -52,7 +58,7 @@ class Home extends Component {
 
 var mapStateToProps = function (state) {
   return {
-    count: state.count.count
+    count: state.count.num
   };
 };
 

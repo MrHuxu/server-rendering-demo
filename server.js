@@ -19,12 +19,16 @@ app.use((req, res) => {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      res.status(200).render('index', {
-        markup: renderToString(
-          <Provider store={rootStore}>
-            <RouterContext {...renderProps} />
-          </Provider>
-        )
+      var comp = renderProps.components[renderProps.components.length - 1].WrappedComponent;
+      comp.initState().then((state) => {
+        res.status(200).render('index', {
+          markup: renderToString(
+            <Provider store={rootStore}>
+              <RouterContext {...renderProps} />
+            </Provider>
+          ),
+          initState: escape(JSON.stringify(state))
+        });
       });
     } else {
       res.status(404).send('Not found')

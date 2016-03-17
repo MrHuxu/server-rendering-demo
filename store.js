@@ -5,4 +5,6 @@ const rootReducer = combineReducers({
   count
 });
 
-export const rootStore = createStore(rootReducer);
+var initState = (typeof window === 'undefined') ? {} : JSON.parse(unescape(window.__REDUX_INIT_STATE__));
+
+export const rootStore = createStore(rootReducer, initState);
