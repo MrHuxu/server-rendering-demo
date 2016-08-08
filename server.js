@@ -3,8 +3,9 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './routes';
+import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { rootStore } from './store';
+import { customCreateStore } from './store';
 
 import express from 'express';
 var app = express();
@@ -21,9 +22,10 @@ app.use((req, res) => {
     } else if (renderProps) {
       var comp = renderProps.components[renderProps.components.length - 1].WrappedComponent;
       comp.initState().then((state) => {
+        var store = customCreateStore(state);
         res.status(200).render('index', {
           markup: renderToString(
-            <Provider store={rootStore}>
+            <Provider store={store}>
               <RouterContext {...renderProps} />
             </Provider>
           ),
